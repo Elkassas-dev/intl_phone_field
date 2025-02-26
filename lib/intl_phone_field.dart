@@ -201,6 +201,11 @@ class IntlPhoneField extends StatefulWidget {
   ///
   /// Default value is `true`.
   final bool showCountryFlag;
+  
+  /// Whether to show or hide countries dialog.
+  ///
+  /// Default value is `true`.
+  final bool showCountries;
 
   /// Message to be displayed on autoValidate error
   ///
@@ -260,6 +265,7 @@ class IntlPhoneField extends StatefulWidget {
     this.textAlignVertical,
     this.onTap,
     this.readOnly = false,
+    this.showCountries = true,
     this.initialValue,
     this.keyboardType = TextInputType.phone,
     this.controller,
@@ -454,7 +460,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
         decoration: widget.dropdownDecoration,
         child: InkWell(
           borderRadius: widget.dropdownDecoration.borderRadius as BorderRadius?,
-          onTap: widget.enabled ? _changeCountry : null,
+          onTap: widget.enabled ? widget.showCountries? _changeCountry : null : null,
           child: Padding(
             padding: widget.flagsButtonPadding,
             child: Row(
